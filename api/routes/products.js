@@ -18,7 +18,12 @@ router.post('/', (req,res,next)=>{
    var sql="select * from   public.users where uname='" + req.body.userName + "' and pword='"+req.body.passWord+"';";
    console.log(sql);
    pool.query(sql, (err, rows) => {
-        console.log("Rows Count:" + rows.rowCount);
+            if (err) {
+                console.error(err);
+                return;
+            }
+        //console.log("Rows Count:" + rows.rows);
+        console.log("Rows Count:" + rows.rows.rowCount);
 
         if (rows.rowCount == 0){
             res.status(401).json({
