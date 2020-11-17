@@ -5,7 +5,7 @@ const connectionString = 'postgres://trikfpbvsuufym:26299662100d6bb1ac6e13dfbcec
 
 const pool = new Pool({
   connectionString: connectionString,
-  ssl: { rejectUnauthorized: true }
+  sslmode: process.env.NODE_ENV === "production" ? "require" : "disable"
 })
 
 router.get('/', (req,res,next)=>{
