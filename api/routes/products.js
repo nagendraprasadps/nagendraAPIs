@@ -5,7 +5,7 @@ const connectionString = 'postgres://trikfpbvsuufym:26299662100d6bb1ac6e13dfbcec
 
 const pool = new Pool({
   connectionString: connectionString,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: true }
 })
 
 router.get('/', (req,res,next)=>{
