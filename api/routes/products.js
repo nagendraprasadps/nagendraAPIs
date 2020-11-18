@@ -1,3 +1,4 @@
+var fs = require('fs');
 const express = require('express');
 const router=express.Router();
 const { Pool, Client } = require('pg');
@@ -33,11 +34,14 @@ router.post('/', (req,res,next)=>{
             });
         }
         else {
-    
-            res.status(201).json({
-                message:'handling POST request'
-                
+            fs.readFile('videoclient.html', function(err, data) {
+                //console.log(data);
+             res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
             });
+    
+          
         }
 });
 });

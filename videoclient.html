@@ -1,0 +1,23 @@
+<html>
+  <title>Welcome</title>
+    <body>
+      <div  style="margin:auto;width:90%;">
+        <h2>Please click on any of the below videos to view. Please wait for few seconds to see the video being played.</h2>
+      <form action="/resources" method="POST">
+        <input type="text" placeholder="Enter Username" value="movie1.mp4" name="userName" hidden>
+        <button type="submit" formmethod="post" name="submit" value="movie1.mp4" >Click here to open movie1 video</button>
+      </form>
+      <form action="/resources" method="POST">
+        <button type="submit" formmethod="post" name="submit" value="movie2.mp4" >Click here to open movie2 video</button>
+      </form>
+          <!--
+          <video controls>
+            <source src="http://localhost:5000/resources/movie.mp4" type="video/mp4"/>
+             
+            Your browser does not support the <code>video</code> element.
+        </video>
+          -->
+      
+    </div>
+  </body>
+</html>
