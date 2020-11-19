@@ -18,7 +18,7 @@ app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/resources', resourceRoutes);
 
-app.use((req,res,next)=>{
+app.use("/",(req,res,next)=>{
     fs.readFile('login.html', function(err, data) {
         //console.log(data);
      res.writeHead(200, {'Content-Type': 'text/html'});

@@ -9,13 +9,10 @@ const pool = new Pool({
    ssl:true
 })
 
-router.post('/', (req,res,next)=>{
-    console.log(req.body.submit);
-    var vfile;
-    if (req.body.submit == "movie1.mp4") vfile="movie1.mp4";
-    if (req.body.submit == "movie2.mp4") vfile="movie2.mp4";
-    console.log(path.resolve(__dirname,vfile));
-    fs.readFile(path.resolve(__dirname,vfile), function (err, data) {
+router.get('/:vfile', (req,res,next)=>{
+    console.log("REACHED");
+    vfile="./api/routes/" + req.url;
+    fs.readFile(vfile, function (err, data) {
        
         if (err) {
             throw err;
@@ -24,9 +21,11 @@ router.post('/', (req,res,next)=>{
         res.writeHead(200, {'Content-Type': 'video/mp4'});
         res.write(data);
         return res.end();
-        });
-   
+    });
+        
 });
+   
+
 
 
 module.exports = router;

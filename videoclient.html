@@ -1,6 +1,7 @@
 <html>
   <title>Welcome</title>
     <body>
+       <!--
       <div  style="margin:auto;width:90%;">
         <h2>Please click on any of the below videos to view. Please wait for few seconds to see the video being played.</h2>
       <form action="/resources" method="POST">
@@ -10,14 +11,45 @@
       <form action="/resources" method="POST">
         <button type="submit" formmethod="post" name="submit" value="movie2.mp4" >Click here to open movie2 video</button>
       </form>
-          <!--
-          <video controls>
-            <source src="http://localhost:5000/resources/movie.mp4" type="video/mp4"/>
+    -->
+        <table style="border-style:solid;border-width:2px;border-color:blue">
+          <tr><td>
+          <h1>Videos below</h1>
+          <video onplay="myFunction('myVideo')" onended="endedFunction('')" controls id="myVideo" style="width:320;height:135px;margin-top:15px;margin-left:1px;">
+            <source id="img" src="/resources/movie2.mp4" type="video/mp4"/>
              
             Your browser does not support the <code>video</code> element.
         </video>
-          -->
+        </td><td>
+        <div id="progress" style="width:200px;height:50px;float:right;border:1px;width:300px;border-style: solid;border-color:blue;margin-right:100px;">Progress of this video:Yet to play</div>
+         </td></tr><td>
+        <video onplay="myFunction('myvideo1')" onended="endedFunction('1')" controls id="myVideo1" style="width:320;height:135px;margin-top:15px;margin-left:1px;">
+          <source id="img" src="/resources/movie1.mp4" type="video/mp4"/>
+           
+          Your browser does not support the <code>video</code> element.
+      </video>
+    </td><td>
+      <div id="progress1" style="width:200px;height:50px;float:right;border:1px;width:300px;border-style: solid;border-color:blue;margin-right:100px;">Progress of this video:Yet to play</div>
+    </td>
       
-    </div>
+    </table>
   </body>
+  <script>
+    
+function endedFunction(id) {
+  var x=document.getElementById("progress" + id);
+  x.innerHTML="This video is completed."; 
+  x.style.borderColor="green";  
+};
+function myFunction(id) {
+  console.log(id);
+  console.log(id.slice(7,8));
+  var x=document.getElementById("progress" + id.slice(7,8));
+  x.innerHTML="This video is started. This will be updated when the video is completed.";
+  x.style.borderColor="red";
+}
+function updateCurTime() { 
+  alert(vid.currentTime);
+} 
+        </script>
 </html>
