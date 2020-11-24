@@ -77,7 +77,8 @@ span.pass {
 </style>
 </head>
 <body>
-<h1>NP's Learning Management System</h1>
+<h1>Welcome to NP's Learn by Videos</h1>
+<h1>Your home for academic skills</h1>
 <form action="/products" method="POST">
 <div class="profilePic">
 <!--img
@@ -88,14 +89,14 @@ class="avatar"/-->
 </div>
 <div class="formFields">
 <label for="userName"><b>Username</b></label>
-<input type="text" placeholder="Enter Username" name="userName" required />
+<input id="un" type="text" placeholder="Enter Username" name="userName" required />
 <label for="passWord"><b>Password</b></label>
 <input
 type="password"
 placeholder="Enter Password"
 name="passWord"
 required/>
-<button type="submit">Login</button>
+<button type="submit" onclick="updateUname();">Login</button>
 <label>
 <input type="checkbox" checked="checked" name="remember" /> Remember me
 </label>
@@ -106,4 +107,13 @@ required/>
 </div>
 </form>
 </body>
+<script>
+  function updateUname(){
+   // alert("np");
+    var uname = document.getElementById("un").value ;
+    //alert(uname);
+    window.localStorage.setItem("userName",uname);
+    
+  }
+</script>
 </html>

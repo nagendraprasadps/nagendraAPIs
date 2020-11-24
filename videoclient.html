@@ -1,6 +1,6 @@
 <html>
-  <title>Welcome</title>
-    <body>
+  <title >Welcome </title>
+    <body onload="updateUserName();" id="np1">
        <!--
       <div  style="margin:auto;width:90%;">
         <h2>Please click on any of the below videos to view. Please wait for few seconds to see the video being played.</h2>
@@ -12,24 +12,26 @@
         <button type="submit" formmethod="post" name="submit" value="movie2.mp4" >Click here to open movie2 video</button>
       </form>
     -->
-        <table style="border-style:solid;border-width:2px;border-color:blue">
+      <h1 id="np" >Welcome </h1>
+      <h2>Please click on any Videos below to play.</h2>
+        <table style="border-style:solid;border-width:2px;width:95%;border-color:blue">
           <tr><td>
           <h1>Videos below</h1>
-          <video onplay="myFunction('myVideo')" onended="endedFunction('')" controls id="myVideo" style="width:320;height:135px;margin-top:15px;margin-left:1px;">
+          <video onplay="myFunction('myVideo')" onended="endedFunction('')" controls id="myVideo" style="width:80%;height:60%;">
             <source id="img" src="/resources/movie2.mp4" type="video/mp4"/>
              
             Your browser does not support the <code>video</code> element.
         </video>
         </td><td>
-        <div id="progress" style="width:200px;height:50px;float:right;border:1px;width:300px;border-style: solid;border-color:blue;margin-right:100px;">Progress of this video:Yet to play</div>
+        <div id="progress" style="width:80%;height:60%;float:right;border:1px;border-style: solid;border-color:blue;">Progress of this video:Yet to play</div>
          </td></tr><td>
-        <video onplay="myFunction('myvideo1')" onended="endedFunction('1')" controls id="myVideo1" style="width:320;height:135px;margin-top:15px;margin-left:1px;">
+        <video onplay="myFunction('myvideo1')" onended="endedFunction('1')" controls id="myVideo1" style="width:80%;height:60%;">
           <source id="img" src="/resources/movie1.mp4" type="video/mp4"/>
            
           Your browser does not support the <code>video</code> element.
       </video>
     </td><td>
-      <div id="progress1" style="width:200px;height:50px;float:right;border:1px;width:300px;border-style: solid;border-color:blue;margin-right:100px;">Progress of this video:Yet to play</div>
+      <div id="progress1" style="width:50%;height:40%;float:right;border:1px;border-style: solid;border-color:blue;margin-right:100px;">Progress of this video:Yet to play</div>
     </td>
       
     </table>
@@ -51,5 +53,10 @@ function myFunction(id) {
 function updateCurTime() { 
   alert(vid.currentTime);
 } 
+function updateUserName(){
+  //alert("NP");
+  document.getElementById("np").innerHTML = "Welcome " + window.localStorage.getItem("userName")  + "!";
+}
+
         </script>
 </html>
