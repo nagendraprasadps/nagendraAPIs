@@ -1,4 +1,8 @@
- /* Bordered form */
+<!DOCTYPE html>
+<html>
+<head>
+  /* Bordered form */
+  <style>
 form {
   border: 3px solid #f1f1f1;
 }
@@ -69,3 +73,29 @@ span.psw {
     width: 100%;
   }
 } 
+</style>
+</head>
+
+ <form action="/products" method="POST">
+  <div class="imgcontainer">
+    <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="userName"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="userName" required>
+
+    <label for="passWord"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="passWord" required>
+
+    <button type="submit" formmethod="post" name="submit" value="sub" >Login</button>
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form> 
