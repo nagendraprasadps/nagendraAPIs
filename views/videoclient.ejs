@@ -1,0 +1,72 @@
+<html>
+  <title >Welcome </title>
+  <style>
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .flex-item-left {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+  }
+</style>
+    <body onload="updateUserName();" id="np1">
+
+      <h1 id="np" >Welcome </h1>
+      <h2>Please click on any Videos below to play.</h2>
+      <video  controls id="myVideo1" style="display:none;width:100%;height:60%;">
+        <source src=""  type="video/mp4"/>     
+        Your browser does not support the <code>video</code> element.
+      </video>
+
+<div class="flex-container">
+  
+  
+  
+</div>
+        <% data.x.forEach(result=>{ %>
+        
+        <img onclick='launchVideo("<%= result %>");' class="flex-item-left" src='<%= result %>' type="image/png"/>
+        
+        
+        <% }); %>
+      
+  </body>
+  <script>
+    
+function launchVideo(vfile) {
+  
+  vfile = vfile.slice(0,vfile.length-3);
+  vfile =vfile + "mp4";
+  alert(vfile);
+  document.getElementById("myVideo1").src = vfile;
+  document.getElementById("myVideo1").style.display = "block"; 
+ 
+};
+
+function endedFunction(id) {
+  var x=document.getElementById("progress" + id);
+  x.innerHTML="This video is completed."; 
+  x.style.borderColor="green";  
+};
+function myFunction(id) {
+  console.log(id);
+  console.log(id.slice(7,8));
+  var x=document.getElementById("progress" + id.slice(7,8));
+  x.innerHTML="This video is started. This will be updated when the video is completed.";
+  x.style.borderColor="red";
+}
+function updateCurTime() { 
+  alert(vid.currentTime);
+} 
+function updateUserName(){
+  //alert("NP");
+  document.getElementById("np").innerHTML = "Welcome " + window.localStorage.getItem("userName")  + "!";
+}
+
+        </script>
+</html>

@@ -8,6 +8,13 @@ path = require('path');
 const productRoutes=require('./api/routes/products');
 const orderRoutes=require('./api/routes/orders');
 const resourceRoutes=require('./api/routes/resources');
+const registerRoutes=require('./api/routes/register');
+const viewsRoutes=require('./api/routes/views');
+const loginRoutes=require('./api/routes/login');
+
+app.set('view engine', 'ejs');
+
+
 
 
 app.use(morgan('dev'));
@@ -17,16 +24,21 @@ app.use(bodyParser.json());
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/resources', resourceRoutes);
+app.use('/register', registerRoutes);
+app.use('/views', viewsRoutes);
+app.use('/login', loginRoutes);
 
 app.use("/",(req,res,next)=>{
-    fs.readFile('login.html', function(err, data) {
-        //console.log(data);
+    res.render('register');
+    /*
      res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
+    */
     });
     
-});
+
+
 
 
 

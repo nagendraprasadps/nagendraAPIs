@@ -9,7 +9,8 @@ const pool = new Pool({
    ssl:true
 })
 
-router.get('/', (req,res,next)=>{
+router.get('/:filename', (req,res,next)=>{
+    console.log(req.params.filename);
     res.status(200).json({
         message:'handling get requests to /products'
     });
@@ -17,7 +18,7 @@ router.get('/', (req,res,next)=>{
 
 router.post('/', (req,res,next)=>{
 
-   var sql="select * from   public.users where uname='" + req.body.userName + "' and pword='"+req.body.passWord+"';";
+   var sql="select * from   public.users where email='" + req.body.userName + "' and pword='"+req.body.passWord+"';";
    console.log(sql);
    pool.query(sql, (err, rows) => {
             if (err) {
@@ -32,19 +33,50 @@ router.post('/', (req,res,next)=>{
                 message:'Authentication failed. Please retry with correct username and password.',
                 
             });
+            
         }
         else {
+            //prepare videoclient.ejs
+            var htmlbody=[];
+            
+            var sql = "select chapter, video_name, status, video_description from progress_table where email='"+req.body.userName+"';";
+            pool.query(sql, (err, rows) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                else{
+                    const data = rows.rows;
+                    
+                    data.forEach(row => {
+                        htmlbody.push("/resources/" + `${row.video_name}`)
+                        
+                        
+                        });
+                       console.log(htmlbody);
+                    }
+                    
+                     //Prepare is completed. Now Render
+                    res.render('videoclient',{data:{x:htmlbody}});
+           
+                });
+            }
+            
+
+
+            /*
             fs.readFile('videoclient.html', function(err, data) {
                 //console.log(data);
              res.writeHead(200, {'Content-Type': 'text/html'});
             res.write(data);
             return res.end();
             });
-    
+            */
           
-        }
+        });
+    
 });
-});
+
 
 router.get('/:productid',(req,res,next)=>{
     const id=req.params.productid;
