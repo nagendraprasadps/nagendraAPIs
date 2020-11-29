@@ -11,6 +11,7 @@ const resourceRoutes=require('./api/routes/resources');
 const registerRoutes=require('./api/routes/register');
 const viewsRoutes=require('./api/routes/views');
 const loginRoutes=require('./api/routes/login');
+const statusRoutes=require('./api/routes/status');
 
 app.set('view engine', 'ejs');
 
@@ -27,6 +28,7 @@ app.use('/resources', resourceRoutes);
 app.use('/register', registerRoutes);
 app.use('/views', viewsRoutes);
 app.use('/login', loginRoutes);
+app.use('/status', statusRoutes);
 
 app.use("/",(req,res,next)=>{
     res.render('register');

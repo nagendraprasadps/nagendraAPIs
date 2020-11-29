@@ -38,8 +38,9 @@ router.post('/', (req,res,next)=>{
         else {
             //prepare videoclient.ejs
             var htmlbody=[];
+            var completed=[];
             
-            var sql = "select chapter, video_name, status, video_description from progress_table where email='"+req.body.userName+"';";
+            var sql = "select chapter, video_name, status, video_description from progress_table where email='"+req.body.userName+"' and status='created';";
             pool.query(sql, (err, rows) => {
                 if (err) {
                     console.error(err);
@@ -55,7 +56,30 @@ router.post('/', (req,res,next)=>{
                         });
                        console.log(htmlbody);
                     }
-                    
+                    //Completed videos adding
+                    /*
+                    console.log("Adding COMPLETED")
+                   
+                    var sql = "select chapter, video_name, status, video_description from progress_table where email='"+req.body.userName+"' and status='completed';";
+                    console.log(sql);
+                    pool.query(sql, (err, rows) => {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                        else
+                        {
+                            console.log('DB SUCCESS');
+                            const data1 = rows.rows;
+                            data1.forEach(row => {
+                                    completed.push("/resources/" + `${row.video_name}`);
+                                    console.log(`${row.video_name}`);
+                                });
+                            console.log(completed);
+                        }  
+                    });
+                    */
+                    //completed video adding
                      //Prepare is completed. Now Render
                     res.render('videoclient',{data:{x:htmlbody}});
            
