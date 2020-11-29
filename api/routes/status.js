@@ -46,9 +46,9 @@ router.post('/:vfile', (req,res,next)=>{
 			return;
 		}
 		else{
-			const data = rows.rows;
+			const data1 = rows.rows;
 			
-			data.forEach(row => {
+			data1.forEach(row => {
 				htmlbody.push("/resources/" + `${row.video_name}`)
 				
 				
