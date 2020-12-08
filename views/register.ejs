@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <style>
-body {font-family: Arial, Helvetica, sans-serif;font-size:28px;}
+body {font-family: Arial, Helvetica, sans-serif;font-size:17px;
+      background-image: linear-gradient(to right, #d41bb1, #330284);
+      color:white;}
 * {box-sizing: border-box}
 
 /* Full-width input fields */
@@ -11,13 +13,13 @@ input[type=text],input[type=email],select, input[type=password] {
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background-color:lightyellow;
   font-size:28px;
   size:30;
 }
 
 input[type=text]:focus, input[type=password]:focus,input[type=email]:focus, select {
-  background-color: #ddd;
+  background-color:lightyellow;
   outline: none;
   font-size:28px;
   size:30;
@@ -71,11 +73,81 @@ button:hover {
 }
 
 /* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
+@media screen and (max-width: 401px) {
+  body {font-family: Arial, Helvetica, sans-serif;font-size:22px; color:white;
+        background-image: linear-gradient(to right, #d41bb1, #330284);
+      }
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text],input[type=email],select, input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  
+  font-size:22px;
+  size:30;
+  background-color:lightyellow;
 }
+
+input[type=text]:focus, input[type=password]:focus,input[type=email]:focus, select {
+  background-color:lightyellow;
+  outline: none;
+  font-size:22px;
+  size:30;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #AEAEAE;
+  font-size: larger;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+  font-size: larger;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  }
+
+
 </style>
 <body>
 
