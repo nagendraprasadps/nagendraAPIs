@@ -40,7 +40,7 @@ router.post('/', (req,res,next)=>{
             var htmlbody=[];
             var completed=[];
             
-            var sql = "select chapter, video_name, status, video_description from progress_table where email='"+req.body.userName+"' and status='created';";
+            var sql = "select chapter, video_name, status, video_description,youtube_url from progress_table where email='"+req.body.userName+"' and status='created';";
             pool.query(sql, (err, rows) => {
                 if (err) {
                     console.error(err);
@@ -50,7 +50,7 @@ router.post('/', (req,res,next)=>{
                     const data = rows.rows;
                     
                     data.forEach(row => {
-                        htmlbody.push("/resources/" + `${row.video_name}`)
+                        htmlbody.push("https://www.youtube.com/embed" + `${row.youtube_url}`)
                         
                         
                         });

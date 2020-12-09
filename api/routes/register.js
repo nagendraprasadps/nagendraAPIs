@@ -46,7 +46,7 @@ router.post('/complete', (req,res,next)=>{
                             console.log('all data');
                             data.forEach(row => {
                                 console.log(`VideoName: ${row.video_name} Subject: ${row.subject} Medium: ${row.medium}`);
-                                sql = "insert into progress_table (email,subject,chapter,video_name,video_description,status) values ('" +req.body.email+ "','"+ `${row.subject}` + "','"+`${row.chapter}` + "','"+ `${row.video_name}` +"','" +`${row.description}` + "','created');";
+                                sql = "insert into progress_table (email,subject,chapter,video_name,video_description,youtube_url,status) values ('" +req.body.email+ "','"+ `${row.subject}` + "','"+`${row.chapter}` + "','"+ `${row.video_name}` +"','" +`${row.description}` + "','" +`${row.youtube_url}` +"','created');";
                                 console.log(sql);
                                 pool.query(sql, (err, rows) => {
                                     if (err) {

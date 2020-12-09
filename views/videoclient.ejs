@@ -2,7 +2,7 @@
   <title >Welcome </title>
   <style>
   .flex-container {
-    display: flex;
+    display: inline;
     flex-direction: row;
     font-size: 30px;
     text-align: center;
@@ -11,6 +11,8 @@
   .flex-item-left {
     background-color: #f1f1f1;
     padding: 10px;
+    width:460px;
+    height:315px;
     flex: 50%;
   }
 </style>
@@ -27,11 +29,13 @@
       
       <button id='hiddenButton' type="submit" style="display:none;">Login</button>
     </form>
-      <h2>Please click on any Chapter images below to load the video & click on the loaded video to play.</h2>
+      <h2>Please click on any videos below to play.</h2>
       <div class="flex-container">
-              <% data.x.forEach(result=>{ %>        
-              <img onclick='launchVideo("<%= result %>");' class="flex-item-left" src='<%= result %>' type="image/png"/>
-              <% }); %>
+              <% data.x.forEach(result=>{ %>  
+                <iframe width="460" height="315"      
+               class="flex-item-left" src='<%= result %>' >
+              </iframe>
+              <%  }); %>
       </div>
 
   </body>
